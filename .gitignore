@@ -1,0 +1,21 @@
+# Build directories
+build/
+generated/
+
+# C++ build artifacts
+*.o
+*.a
+*.so
+*.exe
+dummy_client
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Nix
+result
+result-*
+.direnv/
