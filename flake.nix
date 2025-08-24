@@ -4,15 +4,18 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    openapi-generator.url = "path:/Users/matt/src/openapi-generator";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { self, nixpkgs, flake-utils, openapi-generator }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
+
+        openapi-generator-cli-pkg = openapi-generator.packages.${system}.openapi-generator-cli;
       in
       {
         packages.default = pkgs.stdenv.mkDerivation {
@@ -24,7 +27,8 @@
           nativeBuildInputs = with pkgs; [
             cmake
             pkg-config
-            openapi-generator-cli
+          ] ++ [
+            openapi-generator-cli-pkg
           ];
 
           buildInputs = with pkgs; [
@@ -38,8 +42,8 @@
           buildPhase = ''
             echo "🔧 Generating C client from OpenAPI specification..."
             
-            # Generate C client using openapi-generator-cli
-            openapi-generator-cli generate \
+            # Generate C client using local openapi-generator-cli
+            ${openapi-generator-cli-pkg}/bin/openapi-generator-cli generate \
               -i dummy.openapi.json \
               -g c \
               -o generated \
@@ -265,7 +269,6 @@ EOF
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             # Tools for development/debugging
-            openapi-generator-cli
             cmake
             pkg-config
             curl
@@ -274,6 +277,9 @@ EOF
             
             # JSON tools for debugging
             jq
+          ] ++ [
+            # Local openapi-generator-cli
+            openapi-generator-cli-pkg
           ];
           
           shellHook = ''
