@@ -4,13 +4,13 @@
 #include <string.h>
 
 // These paths will be available after the client is generated in the nix build
-#include "../generated/api/DefaultAPI.h"
-#include "../generated/include/apiClient.h"
-#include "../generated/model/number_operation.h"
-#include "../generated/model/number_response.h"
-#include "../generated/model/action_type.h"
-#include "../generated/include/list.h"
-#include "../generated/external/cJSON.h"
+#include "../api/DefaultAPI.h"
+#include "../include/apiClient.h"
+#include "../model/number_operation.h"
+#include "../model/number_response.h"
+#include "../model/action_type.h"
+#include "../include/list.h"
+#include "../external/cJSON.h"
 
 void print_separator() {
     printf("────────────────────────────────────────\n");

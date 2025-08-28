@@ -73,14 +73,17 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1756071357,
-        "narHash": "sha256-5drgpQhnkLinCH3RaJcs34A6vdX8DecIkumjth+S5F4=",
-        "path": "/Users/matt/src/openapi-generator",
-        "type": "path"
+        "lastModified": 1756077693,
+        "narHash": "sha256-vuS7F0zX8g41Zsw32bcXKZHg4IqvPHXihn2LrHYQkYs=",
+        "owner": "MatrixManAtYrService",
+        "repo": "openapi-generator",
+        "rev": "5eb308746c95647c33095069ed47ac3f26dea07f",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/matt/src/openapi-generator",
-        "type": "path"
+        "owner": "MatrixManAtYrService",
+        "repo": "openapi-generator",
+        "type": "github"
       }
     },
     "root": {
